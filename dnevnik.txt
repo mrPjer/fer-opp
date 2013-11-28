@@ -1,0 +1,108 @@
++---------------------------------------------+
+| Dnevnik sastajanja projektne grupe SilkRoad |
++---------------------------------------------+
+
+-------------------------------------
+S1: 06. 10. 2013., 20h, FER, Zgrada E
+-------------------------------------
+
+Prisutni:
+Luka Strižiæ, Belma Gutliæ, Petar Šegina, Nika Tiliæ
+
+Sažetak:
+Upoznavanje prisutnih èlanova tima i razgovor o moguænostima implementacije (jezici, paketi, biblioteke, frameworkci).
+
+Luka Strižiæ (voditelj), Belma Gutliæ, Matija Srbiæ, Petar Šegina:
+- fokus na implementaciju
+
+Matej Brkašiæ, Davor Lovriæ, Nika Tiliæ:
+- fokus na dokumentiranje
+
+Zakljuèci:
+Luka Strižiæ deklariran voditeljem. Podjela zadataka na najvišoj razini po vještinama.
+
+---------------------------------
+S2: 18. 10. 2013., 13h, FER, aula
+---------------------------------
+
+Prisutni:
+Luka Strižiæ, Matej Brkašiæ, Belma Gutliæ, Davor Lovriæ, Matija Srbiæ, Petar Šegina, Nika Tiliæ
+
+Sažetak:
+Konkretan dogovor o korištenim tehnologijama. Razrada zadataka.
+
+Luka Strižiæ (voditelj):
+- kooridniranje
+- opis projektnog zadatka
+- arhitektura
+
+Matej Brkašiæ:
+- zahtjevi
+- reference
+
+Belma Gutliæ:
+- zahtjevi
+- reference
+
+Davor Lovriæ:
+- zahtjevi
+- rjeènik pojmova
+
+Matija Srbiæ:
+- opis projektnog zadatka
+- arhitektura
+
+Petar Šegina:
+- upoznavanje Django frameworka
+- arhitektura
+
+Nika Tiliæ:
+- zahtjevi
+- rjeènik pojmova
+
+Zakljuèci:
+Zapoèet rad na dokumentaciji. Podjeljeni konkretni zadatci nekim èlanovim. Inicijalne ideje o arhitekturi sustava i baze podataka.
+
+-----------------------------
+S3: 17. 11. 2013., 18h, Skype
+-----------------------------
+
+Prisutni:
+Luka Strižiæ, Matej Brkašiæ, Belma Gutliæ, Davor Lovriæ, Matija Srbiæ, Petar Šegina, Nika Tiliæ
+
+Sažetak:
+Rekapitulacija napravljenog i nenapravljenog. Konaèna podjela zadataka. Usklaðivanje dijagrama i ideja.
+
+Luka Strižiæ (voditelj):
+- kooridniranje
+- opis projektnog zadatka
+- arhitektura
+- ER dijagram
+
+Matej Brkašiæ:
+- use case dijagrami
+- sekvencijski dijagrami
+
+Belma Gutliæ:
+- zahtjevi
+- ostali zahtjevi
+
+Davor Lovriæ:
+- dodavanje referenci
+- superskriptiranje rijeèi sa referencama
+
+Matija Srbiæ:
+- arhitektura
+- lektoriranje opisa projektnog zadatka
+- dijagram razreda
+
+Petar Šegina
+- arhitektura
+- objektni dijagrami
+
+Nika Tiliæ
+- rjeènik pojmova
+- lektoriranje
+
+Zakljuèci:
+Definiranje zadnjih zadataka i završavanje dokumentacije. Ispravljanje typoa, lektoriranje, ureðivanje, èišæenje. Sinkronizacija eventualnih neslaganja izmeðu pojedinih dijelova.
