@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+<div class="row">
+	<div class="col-md-4">
+		<h1>{{ name }}</h1>
+		<p>{{ address }}</p>
+		<h4>Vlasnik</h4>
+		<p>{{ owner|linebreaks }}</p>
+	</div>
+	<div class="col-md-8">
+			  <div style="width: 100%; height: 160px; background: url({{ image }}) 50% 50% no-repeat;">&nbsp;</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-4">
+		<h2>Radno vrijeme</h2>
+		<p>{{ work_hours|linebreaks }}</p>
+		<h4>Minimalna narudžba</h4>
+		<p>{{ min_order }}</p>
+		<h4>Cijena dostave</h4>
+		<p>{{ delivery_cost|linebreaks }}</p>
+		<h4>Prosječno vrijeme dostave</h4>
+		<p>{{ avg_delivery_time|linebreaks }}</p>
+		<h4>Načini plaćanja</h4>
+		<ul>
+		{% for payment_type in payment_types %}
+			<li>{{ payment_type.name }}</li>
+		{% empty %}
+			<li>Načini plaćanja nisu postavljeni!</li>
+		{% endfor %}
+		</ul>
+	</div>
+	<div class="col-md-4">
+		<h2>O pizzeriji</h2>
+		<p>{{ description|linebreaks }}</p>
+		<hr />
+		<p>U prosjeku smo ocijenjeni sa ocjenom {{ avg_score }}</p>
+	</div>
+	<div class="col-md-4">
+		<h2>Jela na akciji</h2>
+		<ul>
+		{% for meal in discounted_meals %}
+			<li>{{ meal.name }}</li> 
+		{% empty %}
+			<li>Danas nema jela na akciji</li>
+		{% endfor %}
+		</ul>
+	</div>
+</div>
+
+{% endblock %}

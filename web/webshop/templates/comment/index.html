@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+<div class="row">
+	<div class="col-md-8">
+		{% for chunk in comments %}
+		<div class="row">
+			{% for comment in chunk %}
+				<div class="col-md-4">
+					{% include 'comment/detail.html' with c=comment only %}
+				</div>
+			{% endfor %}
+		</div>
+		{% empty %}
+		<h3>Trenutno nema komentara za prikazati. Budi prvi koji će objaviti svoje mišljenje!</h3>
+		{% endfor %}
+	</div>
+	<div class="col-md-4">
+		<h3>Objavi svoje mišljenje!</h3>
+		<form method="post">{% csrf_token %}
+			{{ form.as_p }}
+			<input type="submit" value="Objavi" />
+		</form>
+	</div>
+</div>
+
+{% endblock %}

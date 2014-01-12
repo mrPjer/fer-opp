@@ -1,0 +1,141 @@
+[
+{
+    "pk": 1, 
+    "model": "webshop.shopinfo", 
+    "fields": {
+        "value": "Pizzeria 7-ica", 
+        "description": "Naziv pizzerije", 
+        "key": "name"
+    }
+},
+{
+    "pk": 2, 
+    "model": "webshop.shopinfo", 
+    "fields": {
+        "value": "Ilica 28, 10000 Zagreb", 
+        "description": "Adresa pizzerije", 
+        "key": "address"
+    }
+},
+{
+    "pk": 3, 
+    "model": "webshop.shopinfo", 
+    "fields": {
+        "value": "Ivan Horvat", 
+        "description": "Podaci o vlasniku", 
+        "key": "owner"
+    }
+},
+{
+    "pk": 4, 
+    "model": "webshop.shopinfo", 
+    "fields": {
+        "value": "Telefon: +385 1 3265 444\r\nMobitel: +385 91 8537 349", 
+        "description": "Telefonski brojevi", 
+        "key": "phone"
+    }
+},
+{
+    "pk": 5, 
+    "model": "webshop.shopinfo", 
+    "fields": {
+        "value": "Pon - Pet 6:00 - 22:00\r\nSubotom 14:00 - 22:00\r\nNedjeljom ne radimo", 
+        "description": "Radno vrijeme", 
+        "key": "work_hours"
+    }
+},
+{
+    "pk": 6, 
+    "model": "webshop.shopinfo", 
+    "fields": {
+        "value": "35 HRK", 
+        "description": "Iznos minimalne narud\u017ebe", 
+        "key": "min_order"
+    }
+},
+{
+    "pk": 7, 
+    "model": "webshop.shopinfo", 
+    "fields": {
+        "value": "45 minuta", 
+        "description": "Prosje\u010dno vrijeme dostave", 
+        "key": "avg_delivery_time"
+    }
+},
+{
+    "pk": 8, 
+    "model": "webshop.shopinfo", 
+    "fields": {
+        "value": "10 HRK za narud\u017ebe manje od 100 kuna", 
+        "description": "Cijena dostave", 
+        "key": "delivery_cost"
+    }
+},
+{
+    "pk": 9, 
+    "model": "webshop.shopinfo", 
+    "fields": {
+        "value": "Tu sad kao ide neki tekst.\r\n\r\nKoji veli\u010da na\u0161u jednu i jedinu.\r\n\r\nPizzeriju.", 
+        "description": "Opis pizzerije", 
+        "key": "description"
+    }
+},
+{
+    "pk": 10, 
+    "model": "webshop.shopinfo", 
+    "fields": {
+        "value": "http://www.ilfondaccio.com/images/pizzeria/galleria/pizzeria09big.jpg", 
+        "description": "Poveznica na sliku pizzerije", 
+        "key": "image"
+    }
+},
+{
+    "pk": 1, 
+    "model": "webshop.mealcategory", 
+    "fields": {
+        "name": "Doma\u0107a"
+    }
+},
+{
+    "pk": 2, 
+    "model": "webshop.mealcategory", 
+    "fields": {
+        "name": "Talijanska"
+    }
+},
+{
+    "pk": 3, 
+    "model": "webshop.mealcategory", 
+    "fields": {
+        "name": "Kineska"
+    }
+},
+{
+    "pk": 4, 
+    "model": "webshop.mealcategory", 
+    "fields": {
+        "name": "Mediteranska"
+    }
+},
+{
+    "pk": 5, 
+    "model": "webshop.mealcategory", 
+    "fields": {
+        "name": "Pizze"
+    }
+},
+{
+    "pk": 1, 
+    "model": "webshop.paymenttype", 
+    "fields": {
+        "name": "Karticom"
+    }
+},
+{
+    "pk": 2, 
+    "model": "webshop.paymenttype", 
+    "fields": {
+        "name": "Gotovinom"
+    }
+}
+]
