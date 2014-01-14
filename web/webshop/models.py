@@ -4,7 +4,7 @@ from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
 
 class ShopInfo(models.Model):
-        class Meta:
+	class Meta:
             verbose_name = u'informacija o dućanu'
             verbose_name_plural = 'informacije o dućanu'
 
