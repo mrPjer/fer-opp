@@ -106,3 +106,44 @@ Nika Tiliæ
 
 Zakljuèci:
 Definiranje zadnjih zadataka i završavanje dokumentacije. Ispravljanje typoa, lektoriranje, ureðivanje, èišæenje. Sinkronizacija eventualnih neslaganja izmeðu pojedinih dijelova.
+
+---------------------------------
+S4: 26. 12. 2013., Facebook grupa
+---------------------------------
+
+Prisutni:
+Luka Strižiæ, Matej Brkašiæ, Belma Gutliæ, Davor Lovriæ, Matija Srbiæ, Petar Šegina, Nika Tiliæ
+
+Sažetak:
+Retrospekcija na uèinjeno. Planiranje ispravaka i novih zadataka.
+
+Luka Strižiæ (voditelj):
+- kooridniranje
+- ispravak ER dijagrama
+- nadopuna opisa
+
+Matej Brkašiæ:
+- popravak sekvencijskih dijagrama
+- dijagram stanja
+
+Belma Gutliæ:
+- komunikacijski dijagram
+- popis korištenih tehnologija
+
+Davor Lovriæ:
+- dijagram stanja
+- dodavanje referenci
+
+Matija Srbiæ:
+- nadopunjavanje dijagrama razreda
+
+Petar Šegina
+- implementacija
+- nadopuna objektnog dijagrama
+
+Nika Tiliæ
+- rjeènik pojmova
+- komunikacijski dijagram
+
+Zakljuèci:
+Razrada ideje za dalje. Obzirom da praznici još traju, zadatci vjerojatno neæe biti obavljeno do poèetka 1. mjeseca.
