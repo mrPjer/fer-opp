@@ -10,7 +10,6 @@ def index(request):
 	context['avg_score'] = Comment.objects.all().aggregate(Avg('rating'))['rating__avg']
 	context['num_stars'] = int(round(context['avg_score']))
 	context['discounted_meals'] = Meal.objects.filter(on_sale = True) 
-	print(context)
 	return render(request,'index.html', context)
 
 def chunks(l, n):
