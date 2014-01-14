@@ -1,6 +1,14 @@
+{% load range %}
+{% load static %}
+
 <div class="comment">
 	<p>{{ c.content }}</p>
 	<hr />
-	<em>Objavio {{ c.username }}, {{ c.pub_date}}</em>
-	<p>Ocjena: {{ c.rating }}</p>
+	{% if c.rating %}
+	{% for i in c.rating|get_range %}
+		<img class="star" src="{% static "img/star.png" %}" />
+	{% endfor %}
+	{% endif %}
+	<br />
+	<em>{{ c.username }}<br />{{ c.pub_date}}</em>
 </div>

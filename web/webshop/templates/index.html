@@ -1,4 +1,6 @@
 {% extends "base.html" %}
+{% load static %}
+{% load range %}
 
 {% block body %}
 
@@ -37,7 +39,12 @@
 		<h2>O pizzeriji</h2>
 		<p>{{ description|linebreaks }}</p>
 		<hr />
-		<p>U prosjeku smo ocijenjeni sa ocjenom {{ avg_score }}</p>
+		<div id="index_stars">
+		{% for i in num_stars|get_range %}
+			<img class="star" src="{% static "img/star.png"%}" />
+		{% endfor %}
+		</div>
+		<p>U prosjeku smo ocijenjeni sa ocjenom {{ avg_score|floatformat:"2" }}</p>
 	</div>
 	<div class="col-md-4">
 		<h2>Jela na akciji</h2>
