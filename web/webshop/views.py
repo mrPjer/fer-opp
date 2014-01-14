@@ -8,7 +8,8 @@ def index(request):
 	context = dict(map(lambda i: [i.key, i.value], ShopInfo.objects.all()))
 	context['payment_types'] = PaymentType.objects.all()
 	context['avg_score'] = Comment.objects.all().aggregate(Avg('rating'))['rating__avg']
-	context['num_stars'] = int(round(context['avg_score']))
+	if context['avg_score']:
+		context['num_stars'] = int(round(context['avg_score']))
 	context['discounted_meals'] = Meal.objects.filter(on_sale = True) 
 	return render(request,'index.html', context)
 
