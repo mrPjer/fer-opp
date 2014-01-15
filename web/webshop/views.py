@@ -46,3 +46,8 @@ def image(request, filename):
 		response['Content-Encoding'] = content_encoding
 
 	return response
+
+def menu(request):
+	return render(request, 'meal/index.html', {
+		'categories': MealCategory.objects.all().order_by('name')
+	})

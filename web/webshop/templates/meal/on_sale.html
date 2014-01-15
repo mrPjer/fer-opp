@@ -1,5 +1,9 @@
 <div class="row on_sale">
-	<div class="col-md-6 image" style="background-image: url('{{ meal.image.url }}')">
+	<div class="col-md-6 image"
+			  {% if meal.image %}
+			  style="background-image: url('{{ meal.image.url }}')"
+			  {% endif %}
+			  >
 		&nbsp;
 	</div>
 	<div class="col-md-6">

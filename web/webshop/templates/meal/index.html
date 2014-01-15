@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+<div class="row">
+	<div class="col-md-8">
+	{% for category in categories %}
+		<h2>{{ category.name }}</h2>
+		{% for meal in category.meal_set.all %}
+			{% include 'meal/list_item.html' with meal=meal only %}	
+		{% empty %}
+			<em>Nema jela u ovoj kategoriji</em>
+		{% endfor %}
+	{% endfor %}
+	</div>
+	<div class="col-md-4">
+		<h3>Košarica</h3>
+		#TODO
+	</div>
+</div>
+
+{% endblock %}
