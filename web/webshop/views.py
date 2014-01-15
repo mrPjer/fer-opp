@@ -83,7 +83,7 @@ def remove_from_cart(request, mealId):
 
 def cart(request):
 	cart = request.session.get('cart', {})
-	meals = {(Meal.objects.get(pk=k), v) for k, v in cart.items()}
+	meals = [(Meal.objects.get(pk=k), v) for k, v in cart.items()]
 
 	return render(request, 'cart/index.html', {
 		'meals': meals,
