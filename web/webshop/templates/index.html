@@ -50,11 +50,10 @@
 	</div>
 	<div class="col-md-4">
 		<h2>Jela na akciji</h2>
-		<ul>
 		{% for meal in discounted_meals %}
-			<li>{{ meal.name }}</li> 
+			{% include 'meal/on_sale.html' with meal=meal only %}
 		{% empty %}
-			<li>Danas nema jela na akciji</li>
+			<em>Danas nema jela na akciji</em>
 		{% endfor %}
 		</ul>
 	</div>

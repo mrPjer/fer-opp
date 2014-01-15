@@ -3,6 +3,7 @@ from django.db.models import Avg
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import *
 from .forms import CommentForm 
+import mimetypes
 
 def index(request):
 	context = dict(map(lambda i: [i.key, i.value], ShopInfo.objects.all()))
@@ -28,3 +29,20 @@ def comments(request):
 		'comments': chunks(Comment.objects.all().order_by('-pub_date')[:20], 3),
 		'form': form
 	})
+
+def image(request, filename):
+	storage = DatabaseStorage(IMG_DB_OPTS)
+	image_file = storage.open(filename, 'rb')
+
+	if not image_file:
+		raise Http404
+
+	file_content = image_file.read()
+	content_type, content_encoding = mimetypes.guess_type(filename)
+	response = HttpResponse(content=file_content, mimetype=content_type)
+	response['Content-Disposition'] = 'inline; filename=%s' % filename
+
+	if content_encoding:
+		response['Content-Encoding'] = content_encoding
+
+	return response

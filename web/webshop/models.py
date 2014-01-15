@@ -2,6 +2,12 @@
 
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
+from database_storage import DatabaseStorage 
+
+IMG_DB_OPTS = {
+    'table': 'image_uploads',
+    'base_url': '/webshop/img/'
+}
 
 class ShopInfo(models.Model):
 	class Meta:
@@ -48,10 +54,17 @@ class Meal(models.Model):
 
 	name = models.TextField()
 	price = models.FloatField()
+        image = models.ImageField(
+            upload_to='meal',
+            storage=DatabaseStorage(IMG_DB_OPTS)
+        )
 	available = models.BooleanField(default = True)
 	on_sale = models.BooleanField(default = False)
 	times_ordered = models.PositiveIntegerField(default = 0)
 	category = models.ForeignKey(MealCategory)
+
+        def __unicode__(self):
+            return "{} - {}".format(self.category.name, self.name)
 
 class PaymentType(models.Model):
 	class Meta:

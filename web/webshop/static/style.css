@@ -22,3 +22,10 @@ img.star {
 	width: 16px;
 	height: 16px;
 }
+
+.on_sale > .image {
+	width: 96px;
+	height: 96px;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
