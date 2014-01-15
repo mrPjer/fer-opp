@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 
 from django.db import models
 from django.db.models import Avg
@@ -55,21 +55,21 @@ class Meal(models.Model):
 
 	name = models.TextField()
 	price = models.FloatField()
-        image = models.ImageField(
-            upload_to = 'meal',
-            storage=DatabaseStorage(IMG_DB_OPTS),
-            blank = True
-        )
+	image = models.ImageField(
+		upload_to = 'meal',
+		storage=DatabaseStorage(IMG_DB_OPTS),
+		blank = True
+	)
 	available = models.BooleanField(default = True)
 	on_sale = models.BooleanField(default = False)
 	times_ordered = models.PositiveIntegerField(default = 0)
 	category = models.ForeignKey(MealCategory)
 
-        def is_hot(self):
+	def is_hot(self):
             avg = Meal.objects.all().aggregate(Avg('times_ordered'))['times_ordered__avg']
             return self.times_ordered >= avg 
 
-        def __unicode__(self):
+	def __unicode__(self):
             return "{} - {}".format(self.category.name, self.name)
 
 class PaymentType(models.Model):
