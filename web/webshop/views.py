@@ -1,8 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.db.models import Avg
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import *
-from .forms import CommentForm 
+from .forms import * 
 import mimetypes
 
 def index(request):
@@ -50,4 +50,42 @@ def image(request, filename):
 def menu(request):
 	return render(request, 'meal/index.html', {
 		'categories': MealCategory.objects.all().order_by('name')
+	})
+
+def add_to_cart(request, mealId):
+	current = request.session.get('cart', {})
+	count = current.get(mealId, 0)
+	current[mealId]= count + 1
+	request.session.__setitem__('cart', current)
+	
+	return redirect('webshop.views.cart')
+
+def subtract_from_cart(request, mealId):
+	current = request.session.get('cart', {})
+	if mealId in current:
+		count = current.get(mealId, 0)
+		count = count - 1
+		if count <= 0:
+			return remove_from_cart(request, mealId)
+		else:
+			current[mealId] = count
+			request.session.__setitem__('cart', current)
+
+	return redirect('webshop.views.cart')
+	
+
+def remove_from_cart(request, mealId):
+	current = request.session.get('cart', {})
+	current.pop(mealId, None)
+	request.session.__setitem__('cart', current)
+
+	return redirect('webshop.views.cart')
+
+def cart(request):
+	cart = request.session.get('cart', {})
+	meals = {(Meal.objects.get(pk=k), v) for k, v in cart.items()}
+
+	return render(request, 'cart/index.html', {
+		'meals': meals,
+		'form': OrderForm()
 	})

@@ -1,0 +1,7 @@
+{% load static %}
+
+<p>Količina: {{ meal_count }}</p>
+<hr />
+<a href="{% url 'webshop.views.add_to_cart' meal.id %}">Dodaj jedan</a>
+<a href="{% url 'webshop.views.subtract_from_cart' meal.id %}">Makni jedan</a>
+<a href="{% url 'webshop.views.remove_from_cart' meal.id %}">Makni sve</a>

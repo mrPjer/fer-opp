@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+<div class="row">
+
+	<div class="col-md-8">
+		<h3>Sadržaj košarice</h3>
+		{% for meal in meals %}
+			{% include 'meal/list_item.html' with in_cart=True meal=meal.0 meal_count=meal.1 only %}
+		{% empty %}
+		<em>Vaša košarica je prazna</em>
+		{% endfor %}	
+	</div>
+
+	<div class="col-md-4">
+		<h4>Detalji narudžbe</h4>
+		<p>Cijena artikala: ## HRK</p>
+		<p>Cijena dostave: ## HRK</p>
+		<p>Ukupna cijena: ## HRK</p>
+		<form method="post">{% csrf_token %}
+			{{ form.as_p }}
+			<input type="submit" value="Naruči" />
+		</form>
+	</div>
+
+</div>
+
+{% endblock %}

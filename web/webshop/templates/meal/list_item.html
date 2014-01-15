@@ -12,16 +12,10 @@
 		<em>Cijena: {{ meal.price|floatformat:"2" }} HRK</em>
 	</div>	  
 	<div class="col-md-2">
-		{% if meal.available %}
-		<a href="#">Dodaj u košaricu</a>
+		{% if not in_cart %}
+			{% include 'meal/list_item_detail_menu.html' %}
 		{% else %}
-		<em>Jelo trenutno nije dostupno</em>
-		{% endif %}
-		{% if meal.is_hot %}
-			<img class="hot"
-				src="{% static 'img/fire.png'%}"
-				title="Ovo jelo je često naručivano"
-				/>
+			{% include 'meal/list_item_detail_cart.html' %}
 		{% endif %}
 	</div>
 </div>

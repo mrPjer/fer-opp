@@ -1,0 +1,12 @@
+{% load static %}
+{% if meal.available %}
+<a href="{% url 'webshop.views.add_to_cart' meal.id %}">Dodaj u košaricu</a>
+{% else %}
+<em>Jelo trenutno nije dostupno</em>
+{% endif %}
+{% if meal.is_hot %}
+	<img class="hot"
+		src="{% static 'img/fire.png'%}"
+		title="Ovo jelo je često naručivano"
+		/>
+{% endif %}
