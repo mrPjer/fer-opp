@@ -84,3 +84,10 @@ STATIC_URL = '/static/'
 
 # Templates
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
+
+# Email settings
+EMAIL_HOST = 'mail.gmx.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'opp.sedmica@gmx.com'
+EMAIL_HOST_PASSWORD = 'opp1234opp'
+EMAIL_USE_TLS = True

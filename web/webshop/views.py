@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 
 from django.shortcuts import render, redirect, get_object_or_404
+from django.template.loader import render_to_string
 from django.db.models import Avg
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
+from django.core.mail import send_mail
 from .models import *
 from .forms import * 
 import datetime
@@ -118,6 +120,15 @@ def cart(request):
 					orderedMeal.save()
 
 			request.session.__setitem__('cart', {})
+
+                        mail = render_to_string('order/textual.html', {
+                            'order': order,
+                            'meals': map(lambda (m,c):m, meals),
+                            'total': full 
+                        })
+
+                        send_mail(u'Vaša narudžba (#{})'.format(order.id), mail, 'opp.sedmica@gmx.com', [order.contact_email])
+
 			return redirect('webshop.views.cart_success')
 	else:
 		form = OrderForm()
