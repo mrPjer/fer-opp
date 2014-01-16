@@ -113,6 +113,8 @@ def cart(request):
 			order = form.save()
 
 			for (meal, count) in meals:
+                                meal.times_ordered += 1
+                                meal.save()
 				for i in range(0, count):
 					orderedMeal = OrderedMeal()
 					orderedMeal.meal = meal
