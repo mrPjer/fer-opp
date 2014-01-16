@@ -19,6 +19,7 @@
 		<ul class="nav navbar-nav navbar-right">
 			{% if user.is_authenticated %}
 				{% if user.is_superuser %}
+			<li><a href="{% url 'report' %}">Izvještaji</a></li>
 			<li><a href="{% url 'staff' %}">Osoblje</a></li>
 				{% endif %}
 			<li><a href="{% url 'orders' %}">Narudžbe</a></li>

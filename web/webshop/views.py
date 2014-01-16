@@ -2,13 +2,15 @@
 
 from django.shortcuts import render, redirect, get_object_or_404
 from django.template.loader import render_to_string
-from django.db.models import Avg
+from django.db.models import Avg, Min, Max
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
 from .models import *
 from .forms import * 
 import datetime
+from dateutil.relativedelta import relativedelta
+from collections import Counter
 import mimetypes
 
 
@@ -193,4 +195,40 @@ def staff(request):
 
     return render(request, 'staff/index.html', {
         'staff': wc 
+    })
+
+@login_required
+def report(request):
+    dates = Order.objects.aggregate(Min('pub_date'), Max('pub_date'))
+
+    date_min = dates['pub_date__min']
+    date_max = dates['pub_date__max']
+
+    delivery = float(ShopInfo.objects.get(key='delivery_cost').value)
+
+    data = []
+
+    while date_min < date_max:
+        d = date_min
+        orders = Order.objects.filter(pub_date__month = date_min.month, pub_date__year = d.year)
+        count = len(orders)
+        topmeals = []
+        total = 0
+        for order in orders:
+            for meal in order.orderedmeal_set.all():
+                topmeals.append(meal.meal)
+                total += meal.meal.price
+        topmeals = Counter(topmeals).items()
+        topmeals = map(lambda (m,c):m, sorted(topmeals, key=lambda meal: meal[1], reverse=True)[:3])
+        print(topmeals)
+        total += delivery
+        if count == 0:
+            avg = 0
+        else:
+            avg = total / count
+        data.append((date_min, count, avg, topmeals, total))
+        date_min = d + relativedelta(months=1)
+
+    return render(request, 'report/index.html', {
+        'data': data 
     })

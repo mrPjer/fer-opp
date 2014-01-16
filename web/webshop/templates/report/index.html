@@ -2,4 +2,33 @@
 
 {% block body %}
 
+<h2>Izvještaji o prometu</h2>
+
+<table class="table table-bordered table-hover">
+	<tr>
+		<th>Razdoblje</th>
+		<th>Broj narudžbi</th>
+		<th>Prosječna cijena narudžbe</th>
+		<th>Najčešće naručivana jela</th>
+		<th>Ukupan promet</th>
+	</tr>
+	{% for entry in data %}
+	<tr>
+		<td>{{ entry.0.year }} / {{ entry.0.month }}</td>
+		<td>{{ entry.1 }}</td>
+		<td>{{ entry.2|floatformat:2 }}</td>
+		<td>
+		{% for meal in entry.3 %}
+		<p>{{ meal.category.name }} / {{ meal.name }}</p>
+		{% empty %}
+		<em>Niti jedno jelo nije naručeno</em>
+		{% endfor %}
+		</td>
+		<td>{{ entry.4|floatformat:2 }}</td>
+	</tr>
+	{% endfor %}
+</table>
+
+</table>
+
 {% endblock %}
