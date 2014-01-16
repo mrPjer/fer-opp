@@ -12,8 +12,12 @@
 	<div class="col-md-4">
 			  <a href="{% url 'webshop.views.order_details' order.id %}">Detalji narudžbe</a>
 		<hr />
-		<a href="#">Preuzmi narudžbu</a>
+		{% if not order.server %}
+		<a href="{% url 'webshop.views.take_order' order.id %}">Preuzmi narudžbu</a>
 		<br />
+		{% else %}
+		<p>Preuzeo: {{ order.server }}</p>
+		{% endif %}
 		<a href="{% url 'webshop.views.order_as_txt' order.id %}">Preuzmi kao .txt datoteku</a>
 	</div>
 </div>

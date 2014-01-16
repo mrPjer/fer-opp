@@ -2,6 +2,7 @@
 
 from django.db import models
 from django.db.models import Avg
+from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
 from database_storage import DatabaseStorage 
 
@@ -93,13 +94,10 @@ class Order(models.Model):
 	contact_email = models.TextField()
 	payment_type = models.ForeignKey(PaymentType)
 	pub_date = models.DateTimeField(auto_now = True)
+	server = models.ForeignKey(User, blank = True, null = True)
     
-	def price(self):
-		return 42
-
 	def __unicode__(self):
 		return '{} @ {}'.format(self.address, self.pub_date)
-    # TODO - person who will deliver
 
 class OrderedMeal(models.Model):
     order = models.ForeignKey(Order)

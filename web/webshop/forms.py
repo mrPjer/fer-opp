@@ -19,7 +19,7 @@ class CommentForm(ModelForm):
 class OrderForm(ModelForm):
 	class Meta:
 		model = Order
-		exclude = ['pub_date']
+		exclude = ['pub_date', 'server']
 		labels = {
 			'address': u'Adresa dostave',
 			'floor': u'Kat',

@@ -8,6 +8,7 @@ from .models import *
 from .forms import * 
 import datetime
 import mimetypes
+import qsstats
 
 def index(request):
         today = datetime.date.today()
@@ -135,10 +136,16 @@ def cart_success(request):
 @login_required
 def orders(request):
 	return render(request, 'order/index.html', {
-                # TODO sort and filter
-		'open_orders': Order.objects.order_by('-pub_date'),
-		'closed_orders': [] 
+		'open_orders': Order.objects.filter(server__isnull=True).order_by('-pub_date'),
+		'closed_orders': Order.objects.filter(server__isnull=False).order_by('-pub_date') 
 	})
+
+@login_required
+def take_order(request, orderId):
+    order = get_object_or_404(Order, pk=orderId)
+    order.server = request.user
+    order.save()
+    return redirect('webshop.views.orders')
 
 @login_required
 def order_details(request, orderId):
@@ -162,3 +169,4 @@ def order_as_txt(request, orderId):
         'meals': meals,
         'total': total
     }, content_type='text/plain; charset=utf-8')
+
