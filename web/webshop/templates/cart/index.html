@@ -12,14 +12,14 @@
 		<em>Vaša košarica je prazna</em>
 		{% endfor %}	
 		<hr />
-		<p>Ukupna vrijednost: {{ total }} HRK</p>
+		<p>Ukupna vrijednost: {{ total|floatformat:2 }} HRK</p>
 	</div>
 
 	<div class="col-md-4">
 		<h4>Detalji narudžbe</h4>
-		<p>Cijena artikala: {{ total }} HRK</p>
-		<p>Cijena dostave: ## HRK</p>
-		<p>Ukupna cijena: ## HRK</p>
+		<p>Cijena artikala: {{ total|floatformat:2 }} HRK</p>
+		<p>Cijena dostave: {{ delivery|floatformat:2 }} HRK</p>
+		<p>Ukupna cijena: {{ full|floatformat:2 }} HRK</p>
 		<form method="post">{% csrf_token %}
 			{{ form.as_p }}
 			<input type="submit" value="Naruči" />

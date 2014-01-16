@@ -98,7 +98,7 @@ class Order(models.Model):
 		return 42
 
 	def __unicode__(self):
-		return '{} @ {}'.format(address, pub_date)
+		return '{} @ {}'.format(self.address, self.pub_date)
     # TODO - person who will deliver
 
 class OrderedMeal(models.Model):

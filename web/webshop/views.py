@@ -84,9 +84,35 @@ def remove_from_cart(request, mealId):
 def cart(request):
 	cart = request.session.get('cart', {})
 	meals = [(Meal.objects.get(pk=k), v) for k, v in cart.items()]
+	total = sum(map(lambda (m, c): m.price * c, meals))
+	# TODO load from shop info
+	delivery = 20
+	full = total + delivery
+
+	if request.method == 'POST':
+		form = OrderForm(request.POST)
+		if form.is_valid():
+			order = form.save()
+
+			for (meal, count) in meals:
+				for i in range(0, count):
+					orderedMeal = OrderedMeal()
+					orderedMeal.meal = meal
+					orderedMeal.order = order
+					orderedMeal.save()
+
+			request.session.__setitem__('cart', {})
+			return redirect('webshop.views.cart_success')
+	else:
+		form = OrderForm()
 
 	return render(request, 'cart/index.html', {
 		'meals': meals,
-		'total': sum(map(lambda (m, c): m.price * c, meals)),
-		'form': OrderForm()
+		'total': total,
+		'form': form,
+		'delivery': delivery,
+		'full': full
 	})
+
+def cart_success(request):
+	return render(request, 'cart/success.html')
