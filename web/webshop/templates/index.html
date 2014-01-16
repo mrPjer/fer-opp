@@ -21,9 +21,9 @@
 		<h2>Radno vrijeme</h2>
 		<p>{{ work_hours|linebreaks }}</p>
 		<h4>Minimalna narudžba</h4>
-		<p>{{ min_order }}</p>
+		<p>{{ min_order|floatformat:2 }} HRK</p>
 		<h4>Cijena dostave</h4>
-		<p>{{ delivery_cost|linebreaks }}</p>
+		<p>{{ delivery_cost|floatformat:2 }} HRK</p>
 		<h4>Prosječno vrijeme dostave</h4>
 		<p>{{ avg_delivery_time|linebreaks }}</p>
 		<h4>Načini plaćanja</h4>

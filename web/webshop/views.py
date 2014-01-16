@@ -103,8 +103,8 @@ def cart(request):
 	cart = request.session.get('cart', {})
 	meals = [(Meal.objects.get(pk=k), v) for k, v in cart.items()]
 	total = sum(map(lambda (m, c): m.price * c, meals))
-	# TODO load from shop info
-	delivery = 20
+        minimum = float(ShopInfo.objects.get(key='min_order').value)
+	delivery = float(ShopInfo.objects.get(key='delivery_cost').value)
 	full = total + delivery
 
 	if request.method == 'POST':
@@ -124,7 +124,8 @@ def cart(request):
                         mail = render_to_string('order/textual.html', {
                             'order': order,
                             'meals': map(lambda (m,c):m, meals),
-                            'total': full 
+                            'total': full,
+                            'delivery': delivery
                         })
 
                         send_mail(u'Vaša narudžba (#{})'.format(order.id), mail, 'opp.sedmica@gmx.com', [order.contact_email])
@@ -138,7 +139,8 @@ def cart(request):
 		'total': total,
 		'form': form,
 		'delivery': delivery,
-		'full': full
+		'full': full,
+                'minimum': minimum 
 	})
 
 def cart_success(request):
@@ -178,7 +180,8 @@ def order_as_txt(request, orderId):
     return render(request, 'order/textual.html', {
         'order': order,
         'meals': meals,
-        'total': total
+        'total': total,
+        'delivery': float(ShopInfo.objects.get(key='delivery_cost').value)
     }, content_type='text/plain; charset=utf-8')
 
 @login_required

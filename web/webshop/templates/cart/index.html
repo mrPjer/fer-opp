@@ -22,7 +22,11 @@
 		<p>Ukupna cijena: {{ full|floatformat:2 }} HRK</p>
 		<form method="post">{% csrf_token %}
 			{{ form.as_p }}
+			{% if total < minimum %}
+			<em>Vaša narudžba nije dosegla minimalan iznos od {{ minimum|floatformat:2 }} kuna.</em>
+			{% else %}
 			<input type="submit" value="Naruči" />
+			{% endif %}
 		</form>
 	</div>
 
