@@ -87,5 +87,6 @@ def cart(request):
 
 	return render(request, 'cart/index.html', {
 		'meals': meals,
+		'total': sum(map(lambda (m, c): m.price * c, meals)),
 		'form': OrderForm()
 	})
