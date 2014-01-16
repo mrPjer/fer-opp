@@ -24,8 +24,8 @@ class ShopInfo(models.Model):
 
 class Comment(models.Model):
 	class Meta:
-		verbose_name = u'komentar'
-		verbose_name_plural = u'komentari'
+		verbose_name = 'komentar'
+		verbose_name_plural = 'komentari'
 
 	username = models.TextField()
 	pub_date = models.DateTimeField(auto_now = True)
@@ -40,8 +40,8 @@ class Comment(models.Model):
 
 class MealCategory(models.Model):
 	class Meta:
-		verbose_name = u'kategorija jela'
-		verbose_name_plural = u'kategorije jela'
+		verbose_name = 'kategorija jela'
+		verbose_name_plural = 'kategorije jela'
 
 	name = models.TextField()
     
@@ -50,8 +50,8 @@ class MealCategory(models.Model):
 
 class Meal(models.Model):
 	class Meta:
-		verbose_name = u'jelo'
-		verbose_name_plural = u'jela'
+		verbose_name = 'jelo'
+		verbose_name_plural = 'jela'
 
 	name = models.TextField()
 	price = models.FloatField()
@@ -67,15 +67,15 @@ class Meal(models.Model):
 
 	def is_hot(self):
             avg = Meal.objects.all().aggregate(Avg('times_ordered'))['times_ordered__avg']
-            return self.times_ordered >= avg 
+            return self.times_ordered >= 2*avg 
 
 	def __unicode__(self):
-            return "{} - {}".format(self.category.name, self.name)
+            return u"{} - {}".format(self.category.name, self.name)
 
 class PaymentType(models.Model):
 	class Meta:
-		verbose_name = u'način plaćanja'
-		verbose_name_plural = u'načini plaćanja'
+		verbose_name = 'način plaćanja'
+		verbose_name_plural = 'načini plaćanja'
 
 	name = models.TextField()
 
@@ -84,8 +84,8 @@ class PaymentType(models.Model):
 
 class Order(models.Model):
 	class Meta:
-		verbose_name = u'narudžba'
-		verbose_name_plural = u'narudžbe'
+		verbose_name = 'narudžba'
+		verbose_name_plural = 'narudžbe'
 
 	address = models.TextField()
 	floor = models.TextField()
@@ -98,7 +98,7 @@ class Order(models.Model):
 		return 42
 
 	def __unicode__(self):
-		return u'{} @ {}'.format(address, pub_date)
+		return '{} @ {}'.format(address, pub_date)
     # TODO - person who will deliver
 
 class OrderedMeal(models.Model):
