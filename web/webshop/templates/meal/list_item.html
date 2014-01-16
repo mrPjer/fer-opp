@@ -12,10 +12,12 @@
 		<em>Cijena: {{ meal.price|floatformat:"2" }} HRK</em>
 	</div>	  
 	<div class="col-md-2">
+		{% if not hide_detail %}
 		{% if not in_cart %}
 			{% include 'meal/list_item_detail_menu.html' %}
 		{% else %}
 			{% include 'meal/list_item_detail_cart.html' %}
+		{% endif %}
 		{% endif %}
 	</div>
 </div>

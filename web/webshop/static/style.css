@@ -47,3 +47,11 @@ img.star {
 	height: 48px;
 	margin: 8px;
 }
+
+.order_details td {
+	padding: 0.8em;
+}
+
+.order_details tr td:nth-child(1) {
+	font-weight: bold;
+}

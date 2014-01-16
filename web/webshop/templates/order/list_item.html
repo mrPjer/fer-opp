@@ -1,0 +1,19 @@
+<div class="row order">
+	<h4>{{ order.pub_date }}</h4>
+	<div class="col-md-4">
+		<p>Adresa: {{ order.address }}</p>
+		<p>Kat: {{ order.floor }}</p>
+	</div>
+	<div class="col-md-4">
+		<p>Telefon: {{ order.contact_phone }}</p>
+		<p>E-mail: {{ order.contact_email }}</p>
+		<p>Način plaćanja: {{ order.payment_type }}</p>
+	</div>
+	<div class="col-md-4">
+			  <a href="{% url 'webshop.views.order_details' order.id %}">Detalji narudžbe</a>
+		<hr />
+		<a href="#">Preuzmi narudžbu</a>
+		<br />
+		<a href="{% url 'webshop.views.order_as_txt' order.id %}">Preuzmi kao .txt datoteku</a>
+	</div>
+</div>

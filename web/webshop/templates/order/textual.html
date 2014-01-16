@@ -1,0 +1,20 @@
+{{ name }} - Online sustav za narudžbe
+----------------------------------------
+
+Ispis narudžbe #{{ order.id }}
+
+Datum narudžbe: {{ order.pub_date }}
+Adresa        : {{ order.address }}
+Kat           : {{ order.floor }}
+Telefon       : {{ order.contact_phone }}
+E-mail        : {{ order.contact_email }}
+Način plaćanja: {{ order.payment_type }}
+
+Popis jela:
+
+{% for meal in meals %}
+    * {{ meal.name }}
+	   = {{ meal.price|floatformat:2 }} HRK
+{% endfor %}
+
+Ukupno: {{ total|floatformat:2 }} HRK

@@ -1,12 +1,23 @@
-from django.shortcuts import render, redirect
+# -*- coding: utf-8 -*-
+
+from django.shortcuts import render, redirect, get_object_or_404
 from django.db.models import Avg
 from django.http import HttpResponse, HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
 from .models import *
 from .forms import * 
+import datetime
 import mimetypes
 
 def index(request):
+        today = datetime.date.today()
+
 	context = dict(map(lambda i: [i.key, i.value], ShopInfo.objects.all()))
+        context['num_orders_month'] = Order.objects.filter(
+            pub_date__year = today.year,
+            pub_date__month = today.month
+        ).count()
+        print(context['num_orders_month'])
 	context['payment_types'] = PaymentType.objects.all()
 	context['avg_score'] = Comment.objects.all().aggregate(Avg('rating'))['rating__avg']
 	if context['avg_score']:
@@ -120,3 +131,34 @@ def cart(request):
 
 def cart_success(request):
 	return render(request, 'cart/success.html')
+
+@login_required
+def orders(request):
+	return render(request, 'order/index.html', {
+                # TODO sort and filter
+		'open_orders': Order.objects.order_by('-pub_date'),
+		'closed_orders': [] 
+	})
+
+@login_required
+def order_details(request, orderId):
+    order = get_object_or_404(Order, pk=orderId)
+    meals = map(lambda om: om.meal, list(order.orderedmeal_set.all()))
+    total = sum(map(lambda m:m.price, meals))
+    return render(request, 'order/detail.html', {
+        'order': order,
+        'meals': meals,
+        'total': total
+    })
+
+@login_required
+def order_as_txt(request, orderId):
+    order = get_object_or_404(Order, pk=orderId)
+    name = ShopInfo.objects.get(key="name").value
+    meals = map(lambda om: om.meal, list(order.orderedmeal_set.all()))
+    total = sum(map(lambda m:m.price, meals))
+    return render(request, 'order/textual.html', {
+        'order': order,
+        'meals': meals,
+        'total': total
+    }, content_type='text/plain; charset=utf-8')

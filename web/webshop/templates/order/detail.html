@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<div class="row order_details">
+
+	<div class="col-md-5">
+		
+		<h2>Detalji narudžbe #{{ order.id }}</h2>
+		<h3>Naručeno {{ order.pub_date }}</h3>
+		<hr />
+
+		<h4>Podaci o naručitelju</h4>
+		<table>
+			<tr>
+				<td>Adresa</td>
+				<td>{{ order.address }}</td>
+			</tr>
+			<tr>
+				<td>Kat</td>
+				<td>{{ order.floor }}</td>
+			</tr>
+			<tr>
+				<td>Telefon</td>
+				<td>{{ order.contact_phone }}</td>
+			</tr>
+			<tr>
+				<td>E-mail</td>
+				<td>{{ order.contact_email }}</td>
+			</tr>
+			<tr>
+				<td>Način plaćanja</td>
+				<td>{{ order.payment_type }}</td>
+			</tr>
+			<tr>
+				<td>Ukupna cijena</td>
+				<td>{{ total|floatformat:2 }} HRK</td>
+			</tr>
+		</table>
+	</div>
+
+	<div class="col-md-7">
+		{% for meal in meals %}
+			{% include 'meal/list_item.html' with meal=meal hide_detail=True only %}
+		{% empty %}
+		<em>U narudžbi nije bilo jela</em>
+		{% endfor %}
+	</div>
+
+</div>
+
+{% endblock %}

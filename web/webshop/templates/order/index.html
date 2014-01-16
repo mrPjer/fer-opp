@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+<h2>Narudžbe</h2>
+
+<br />
+
+<h4>Otvorene narudžbe</h4>
+
+{% for order in open_orders %}
+
+	{% include 'order/list_item.html' with order=order only %}
+
+{% empty %}
+
+<em>Nema otvorenih narudžbi</em>
+
+{% endfor %}
+
+<hr />
+
+<h4>Zatvorene narudžbe</h4>
+
+{% for order in closed_orders %}
+
+	{% include 'order/list_item.html' with order=order only %}
+
+{% empty %}
+
+<em>Nema preuzetih narudžbi</em>
+
+{% endfor %}
+
+{% endblock %}
