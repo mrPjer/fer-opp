@@ -12,6 +12,5 @@ admin.site.register(Comment,CommentRegister)
 admin.site.register(Meal)
 admin.site.register(PaymentType)
 admin.site.register(Order)
-admin.site.register(OrderedMeal)
 admin.site.register(MealCategory)
 
