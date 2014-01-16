@@ -14,8 +14,12 @@
 	{% endfor %}
 	</div>
 	<div class="col-md-4">
-		<h3>Košarica</h3>
-		#TODO
+		<h3>U vašoj košarici</h3>
+		{% for meal in meals %}
+			{% include 'meal/list_item_menu.html' with in_cart=True meal=meal.0 meal_count=meal.1 only %}
+		{% empty %}
+		<p>Vaša košarica čeka svoje prvo jelo!</p>
+		{% endfor %}
 	</div>
 </div>
 

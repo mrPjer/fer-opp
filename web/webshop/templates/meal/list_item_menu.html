@@ -1,0 +1,13 @@
+{% load staticfiles %}
+<div class="row meal-detail">
+	<div class="col-md-8 image"
+			  {% if meal.image %}
+			  style="background-image: url('{{ meal.image.url }}')"
+			  {% endif %}
+			  >
+		&nbsp;
+	</div>
+	<div class="col-md-4">
+		<h4>{{ meal.name }}</h4>
+	</div>	  
+</div>

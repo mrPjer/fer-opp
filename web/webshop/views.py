@@ -48,8 +48,12 @@ def image(request, filename):
 	return response
 
 def menu(request):
+	cart = request.session.get('cart', {})
+	meals = [(Meal.objects.get(pk=k), v) for k, v in cart.items()]
+
 	return render(request, 'meal/index.html', {
-		'categories': MealCategory.objects.all().order_by('name')
+		'categories': MealCategory.objects.all().order_by('name'),
+		'meals': meals
 	})
 
 def add_to_cart(request, mealId):
