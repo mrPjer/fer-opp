@@ -8,7 +8,7 @@ from .models import *
 from .forms import * 
 import datetime
 import mimetypes
-import qsstats
+
 
 def index(request):
         today = datetime.date.today()
