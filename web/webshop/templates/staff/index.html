@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<h2>Popis djelatnika</h2>
+
+<a href="{% url 'admin:auth_user_changelist' %}" target="_blank">Upravljanje djelatnicima</a>
+
+<br />
+
+<table class="table table-bordered table-hover">
+	<tr>
+		<th>Korisničko ime</td>
+		<th>Ime</td>
+		<th>Prezime</td>
+		<th>Broj preuzetih narudžbi</td>
+	</tr>
+	{% for user in staff %}
+	<tr>
+		<td>{{ user.0.username }}</td>
+		<td>{{ user.0.first_name }}</td>
+		<td>{{ user.0.last_name }}</td>
+		<td>{{ user.1 }}</td>
+	</tr>
+	{% endfor %}
+</table>
+
+{% endblock %}

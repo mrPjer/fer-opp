@@ -13,6 +13,7 @@ urlpatterns = patterns('',
 	url(r'^narudzbe/(?P<orderId>.+)/preuzmi$', views.take_order, name='take_order'),
 	url(r'^narudzbe/(?P<orderId>.+)/detalji$', views.order_details, name='order_details'),
 	url(r'^narudzbe/(?P<orderId>.+).txt$', views.order_as_txt, name='order_as_txt'),
+	url(r'^osoblje/$', views.staff, name='staff'),
 	url(r'^img/(?P<filename>.+)$', views.image, name='image'),
 	url(r'^$', views.index, name='index'),
 )

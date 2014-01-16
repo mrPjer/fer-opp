@@ -170,3 +170,11 @@ def order_as_txt(request, orderId):
         'total': total
     }, content_type='text/plain; charset=utf-8')
 
+@login_required
+def staff(request):
+    staff = User.objects.order_by('username')
+    wc = map(lambda u: (u, Order.objects.filter(server=u).count()), staff)
+
+    return render(request, 'staff/index.html', {
+        'staff': wc 
+    })
