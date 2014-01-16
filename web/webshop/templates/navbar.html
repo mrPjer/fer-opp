@@ -18,10 +18,10 @@
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
 			{% if user.is_authenticated %}
-			<li><a href="{% url 'staff' %}">Osoblje</a></li>
 				{% if user.is_superuser %}
-			<li><a href="{% url 'orders' %}">Narudžbe</a></li>
+			<li><a href="{% url 'staff' %}">Osoblje</a></li>
 				{% endif %}
+			<li><a href="{% url 'orders' %}">Narudžbe</a></li>
 			{% endif %}
 			<li><a href="{% url 'admin:index' %}" target="_blank">Administracija</a></li>	
 		</ul>
