@@ -128,7 +128,7 @@ def cart(request):
                             'delivery': delivery
                         })
 
-                        send_mail(u'Vaša narudžba (#{})'.format(order.id), mail, 'opp.sedmica@gmx.com', [order.contact_email])
+                        #send_mail(u'Vaša narudžba (#{})'.format(order.id), mail, 'opp.sedmica@gmx.com', [order.contact_email])
 
 			return redirect('webshop.views.cart_success')
 	else:
